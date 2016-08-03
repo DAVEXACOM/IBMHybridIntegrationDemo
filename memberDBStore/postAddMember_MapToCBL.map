@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <input derivedFrom="MB:JSON_schema_in_swagger_document" path="/swagger.json" var="var1"/>
+    <output path="mbsharedlib://memberModel/member.xsd"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="in" uri="http://www.ibm.com/iib/msl/json"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="postAddMember_MapToCBL">
+        <input derivedFrom="MB:JSON_operation_name:postAddMember" namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties,LocalEnvironment)" var="ComIbmMessageAssembly_JSON">
+            <cast derivedFrom="MB:JSON_operation_request" path="$ComIbmMessageAssembly_JSON/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}Member" ref="var1"/>
+        </input>
+        <output path="mb:msg(MEMBER,assembly,DFDL,Properties)" var="MessageAssembly"/>
+        <task type="info">
+            <documentation description="The REST API input data of operation postAddMember.">This Task is provided to show the location of the REST API input data of operation postAddMember.
+The path and query parameters are provided under "Parameters".
+You may need to use these as inputs to your mappings.</documentation>
+            <input path="$ComIbmMessageAssembly_JSON/LocalEnvironment/REST/Input"/>
+        </task>
+        <move>
+            <input path="$ComIbmMessageAssembly_JSON/Properties"/>
+            <output path="$MessageAssembly/Properties"/>
+            <override>
+                <assign value="{memberModel}">
+                    <output path="$MessageAssembly/Properties/MessageSet"/>
+                </assign>
+                <assign value="{}:MEMBER">
+                    <output path="$MessageAssembly/Properties/MessageType"/>
+                </assign>
+            </override>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/policynum"/>
+            <output path="$MessageAssembly/MEMBER/POLICYNUM"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/policytype"/>
+            <output path="$MessageAssembly/MEMBER/POLICYTYPE"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/firstname"/>
+            <output path="$MessageAssembly/MEMBER/FIRSTNAME"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/lastname"/>
+            <output path="$MessageAssembly/MEMBER/LASTNAME"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/streetnum"/>
+            <output path="$MessageAssembly/MEMBER/STREETNUM"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/streetname"/>
+            <output path="$MessageAssembly/MEMBER/STREETNAME"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/city"/>
+            <output path="$MessageAssembly/MEMBER/CITY"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/pcode"/>
+            <output path="$MessageAssembly/MEMBER/PCODE"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/age"/>
+            <output path="$MessageAssembly/MEMBER/AGE"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

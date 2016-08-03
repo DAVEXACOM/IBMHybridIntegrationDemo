@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="Event" type="EventType"></xsd:element>
+    
+    <xsd:complexType name="EventType">
+    	<xsd:sequence>
+    		<xsd:element name="Field1" type="xsd:string"></xsd:element>
+    	</xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

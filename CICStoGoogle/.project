@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>CICStoGoogle</name>
+	<comment></comment>
+	<projects>
+		<project>CICStoGoogle_IIBtoAppConnectWebhookLibTest</project>
+		<project>CICStoGoogle_IIBtoAppConnectApplicationInterface</project>
+		<project>CICStoGoogle_IIBtoAppConnectWebhookLib_unittest</project>
+		<project>CICStoGoogle_IIBtoAppConnectWebhookLibJava</project>
+		<project>CICStoGoogle_IIBtoAppConnectWebhookLib</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>com.ibm.etools.patterns.PatternInstanceBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.ibm.etools.patterns.PatternInstanceNature</nature>
+	</natures>
+</projectDescription>

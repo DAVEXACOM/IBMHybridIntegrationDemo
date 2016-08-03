@@ -1,0 +1,4 @@
+
+
+Importing file: /home/gtw/IBM/IIBT10/IIBAPPConnInsDemo2/memberModel/importFiles/member.cpy
+

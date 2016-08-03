@@ -1,0 +1,67 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "title" : "memberDBStore",
+    "version" : "1.0.0",
+    "description" : "memberDBStore"
+  },
+  "paths" : {
+    "/addMember" : {
+      "post" : {
+        "operationId" : "postAddMember",
+        "responses" : {
+          "200" : {
+            "description" : "The operation was successful."
+          }
+        },
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "description" : "Insert a addMember",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "schema" : {
+            "$ref" : "#/definitions/Member"
+          },
+          "description" : "The request body for the operation",
+          "required" : true
+        } ]
+      }
+    }
+  },
+  "basePath" : "/memberdbstore/v1",
+  "definitions" : {
+    "Member" : {
+      "type" : "object",
+      "properties" : {
+        "policynum" : {
+          "type" : "string"
+        },
+        "policytype" : {
+          "type" : "string"
+        },
+        "firstname" : {
+          "type" : "string"
+        },
+        "lastname" : {
+          "type" : "string"
+        },
+        "streetnum" : {
+          "type" : "string"
+        },
+        "streetname" : {
+          "type" : "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "pcode" : {
+          "type" : "string"
+        },
+        "age" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

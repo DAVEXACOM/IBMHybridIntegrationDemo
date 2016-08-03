@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <input path="mbsharedlib://memberModel/member.xsd" var="var"/>
+    <input path="jar:file://!com/ibm/msl/mapping/rdb/xsds/dbreturn.xsd" var="var1"/>
+    <output path="db:table(/Physical Data Model.dbm,SAMPLE,DEMO,MEMBER)" var="MEMBER"/>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="CICSMQSyncToStore_Mapping">
+        <input path="$var/mb:msg(MEMBER,assembly,DFDL,Properties)"/>
+        <output path="$MEMBER/db:insert(fn:false(),POLICYNUM,POLICYTYPE,FIRSTNAME,LASTNAME,STREETNUM,STREETNAME,CITY,PCODE,AGE)" var="dbinsert"/>
+        <transaction>
+            <insert ref="dbinsert">
+                <input path="MEMBER"/>
+                <output path="$dbinsert/."/>
+                <move automap="true">
+                    <input path="POLICYNUM"/>
+                    <output path="POLICYNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="POLICYTYPE"/>
+                    <output path="POLICYTYPE"/>
+                </move>
+                <move automap="true">
+                    <input path="FIRSTNAME"/>
+                    <output path="FIRSTNAME"/>
+                </move>
+                <move automap="true">
+                    <input path="LASTNAME"/>
+                    <output path="LASTNAME"/>
+                </move>
+                <move automap="true">
+                    <input path="STREETNUM"/>
+                    <output path="STREETNUM"/>
+                </move>
+                <move automap="true">
+                    <input path="STREETNAME"/>
+                    <output path="STREETNAME"/>
+                </move>
+                <move automap="true">
+                    <input path="CITY"/>
+                    <output path="CITY"/>
+                </move>
+                <move automap="true">
+                    <input path="PCODE"/>
+                    <output path="PCODE"/>
+                </move>
+                <move automap="true">
+                    <input path="AGE"/>
+                    <output path="AGE"/>
+                </move>
+            </insert>
+            <return>
+                <input path="$var1/DBInsertReturn"/>
+            </return>
+        </transaction>
+    </mappingDeclaration>
+</mappingRoot>

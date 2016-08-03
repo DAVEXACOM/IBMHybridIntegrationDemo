@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" domainIDExtension="mb" mainMap="true" targetNamespace="default" version="8.0.5.0" xmlns:map="default">
+    <inlinedXMLSchema><![CDATA[<?xml version="1.0" encoding="UTF-8"?><xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="age" nillable="true" type="xsd:string"/>
+    <xsd:element name="pcode" nillable="true" type="xsd:string"/>
+    <xsd:element name="city" nillable="true" type="xsd:string"/>
+    <xsd:element name="streetname" nillable="true" type="xsd:string"/>
+    <xsd:element name="streetnum" nillable="true" type="xsd:string"/>
+    <xsd:element name="lastname" nillable="true" type="xsd:string"/>
+    <xsd:element name="firstname" nillable="true" type="xsd:string"/>
+    <xsd:element name="policytype" nillable="true" type="xsd:string"/>
+    <xsd:element name="policynum" nillable="true" type="xsd:string"/>
+</xsd:schema>]]></inlinedXMLSchema>
+    <input path="mbsharedlib://memberModel/member.xsd" var="var2"/>
+    <input inlinedXMLSchema="true" path="../schema_0.xsd" var="var1"/>
+    <output path="jar:file://!com/ibm/etools/mft/map/xsds/predefined/JsonDomainMsg.xsd" var="var"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="out" uri="http://www.ibm.com/iib/msl/json"/>
+    </namespaces>
+    <generation engine="xquery"/>
+    <mappingDeclaration name="CICSMQSyncToStore_MapToEvent">
+        <input path="$var2/mb:msg(MEMBER,assembly,DFDL,Properties)" var="ComIbmMessageAssembly_MEMBER"/>
+        <output namespace="http://www.ibm.com/iib/msl/json" path="$var/mb:msg(JSON,assembly,JSON,Properties)" var="ComIbmMessageAssembly_JSON">
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/Data/type('anyType')" qualifier="{http://www.ibm.com/iib/msl/json}JSONObject" ref="var"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="policynum" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="policytype" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="firstname" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="lastname" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="streetnum" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="streetname" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="city" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="pcode" ref="var1"/>
+            <cast castType="userDefined" path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/any" qualifier="age" ref="var1"/>
+        </output>
+        <move>
+            <input path="$ComIbmMessageAssembly_MEMBER/Properties"/>
+            <output path="$ComIbmMessageAssembly_JSON/Properties"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/POLICYNUM"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/policynum"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/POLICYTYPE"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/policytype"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/FIRSTNAME"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/firstname"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/LASTNAME"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/lastname"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/STREETNUM"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/streetnum"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/STREETNAME"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/streetname"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/CITY"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/city"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/PCODE"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/pcode"/>
+        </move>
+        <move automap="true">
+            <input path="$ComIbmMessageAssembly_MEMBER/MEMBER/AGE"/>
+            <output path="$ComIbmMessageAssembly_JSON/JSON/spath('Data',2)/age"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><p:root xmlns:p="com.ibm.etools.mft.pattern.hybridintegration.appconnect.pattern">
+<instanceName>CICStoGoogle</instanceName>
+<ppIncludeSample>5061747465726E732173616D706C655F6E6F6E65</ppIncludeSample>
+<ppTriggerName>newMember</ppTriggerName>
+<ppTriggerDescription>Notification Event for new Member syncing CICS to DB2 on prem</ppTriggerDescription>
+<ppTriggerFields>
+<row>
+<fieldName>policynum</fieldName>
+</row>
+<row>
+<fieldName>policytype</fieldName>
+</row>
+<row>
+<fieldName>firstname</fieldName>
+</row>
+<row>
+<fieldName>lastname</fieldName>
+</row>
+<row>
+<fieldName>streetnum</fieldName>
+</row>
+<row>
+<fieldName>streetname</fieldName>
+</row>
+<row>
+<fieldName>city</fieldName>
+</row>
+<row>
+<fieldName>pcode</fieldName>
+</row>
+<row>
+<fieldName>age</fieldName>
+</row>
+</ppTriggerFields>
+</p:root>
