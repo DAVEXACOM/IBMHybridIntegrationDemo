@@ -20,6 +20,6 @@ Featured products:
 3.	IBM API Connect v5 (on Bluemix)			
 4.	IBM App Connect
 
-This repository contains the "end state" collateral for the demo. An IBM Integration Community article can be viewed at the following URL (URL to come)that full explains the scenario and how it was build. The article will reference "key press by key press" instructional videos captured for every step of the build.
+This repository contains the "end state" collateral for the demo. An IBM Integration Community article can be viewed at the following URL https://developer.ibm.com/integration/blog/2016/08/08/hybrid-integration-on-premises-to-multiple-clouds-going-beyond-the-whizz-bang-tool-demos/ that full explains the scenario and how it was build. The article will reference "key press by key press" instructional videos captured for every step of the build.
 
 No programmers were harmed in the development of this collateral due to there being zero lines of code written in building out of this Hybrid Integration use case. 
